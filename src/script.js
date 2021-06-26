@@ -37,15 +37,47 @@ pointLight.position.y = 3
 pointLight.position.z = 4
 scene.add(pointLight)
 
+
+//light2
 const pointLight2 = new THREE.PointLight(0xff0000, 2)
-pointLight2.position.set(1,1,1)
-pointLight2.intensity = 1
+pointLight2.position.set(-3,1.33,-1.58)
+pointLight2.intensity = 10
+
 
 scene.add(pointLight2)
+const light2 = gui.addFolder('light 2')
 //GUI use for change varaibles
-gui.add(pointLight2.position,'x').min(-3).max(3).step(.01)
-gui.add(pointLight2.position,'y').min(-3).max(3).step(.01)
-gui.add(pointLight2.position,'z').min(-3).max(3).step(.01)
+light2.add(pointLight2.position,'x').min(-3).max(3).step(.01)
+light2.add(pointLight2.position,'y').min(-3).max(3).step(.01)
+light2.add(pointLight2.position,'z').min(-3).max(3).step(.01)
+light2.add(pointLight2,'intensity').min(0).max(10).step(0.01)
+//light3
+const pointLight3 = new THREE.PointLight(0x2c79dc, 2)
+pointLight3.position.set(1.72,-2.38,-2.11)
+pointLight3.intensity = 10
+
+scene.add(pointLight3)
+const light3 = gui.addFolder('light 3')
+//GUI use for change varaibles
+light3.add(pointLight3.position,'x').min(-3).max(3).step(.01)
+light3.add(pointLight3.position,'y').min(-3).max(3).step(.01)
+light3.add(pointLight3.position,'z').min(-3).max(3).step(.01)
+light3.add(pointLight3,'intensity').min(0).max(10).step(0.01)
+// showing light position
+// const pointLighthelper = new THREE.PointLightHelper(pointLight2,1)
+// scene.add(pointLighthelper)
+// const pointLighthelper2 = new THREE.PointLightHelper(pointLight3,1)
+// scene.add(pointLighthelper2)
+
+const light3color ={
+    color: 0xff0000
+}
+ 
+light3.addColor(light3color, 'color').onChange(()=>{
+    pointLight3.color.set(light3color.color)
+})
+
+
 /**
  * Sizes
  */
